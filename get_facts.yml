@@ -8,3 +8,4 @@
     - name: set running-config fact
       set_fact:
         running_config: "{{ command_output.stdout }}"
+        cacheable: yes
