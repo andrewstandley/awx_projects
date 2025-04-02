@@ -3,7 +3,6 @@
   tasks:
     - name: Run show version on remote devices
       cisco.ios.ios_command:
-        state: parsed
         commands:
           - "show running-config"
       register: command_output
