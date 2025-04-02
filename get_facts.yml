@@ -5,5 +5,6 @@
       cisco.ios.ios_command:
         commands: show running-config
         register: command_output
-    - set_fact:
-      running_config: "{{ command_output.stdout }}"
+    - name: set running-config fact
+      set_fact:
+        running_config: "{{ command_output.stdout }}"
