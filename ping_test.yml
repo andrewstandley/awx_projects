@@ -1,6 +1,8 @@
 ---
-
 - hosts: all
-  gather_facts: false
+  
+  
   tasks:
-    - ping:
+      - name: Ensure the end devices are reachable
+        net_ping:
+            dest: "{{ hostvars[inventory_hostname]['ansible_host'] }}"
