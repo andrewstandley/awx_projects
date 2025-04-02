@@ -2,12 +2,13 @@
 - hosts: all
   tasks:
     - name: Run show version on remote devices
-      cisco.ios.ios_config:
+      cisco.ios.ios_command:
         state: parsed
-        get_config: True
+        commands:
+          - "show running-config"
       register: command_output
       
     - name: set running-config fact
       set_fact:
-        running_config: "{{ command_output.stdout }}"
+        running_config: "{{ command_output.stdout_lines }}"
         cacheable: yes
