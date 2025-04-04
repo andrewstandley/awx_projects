@@ -1,8 +1,9 @@
 ---
-hosts: all
-tasks:
-  - name: copy file at root dir of flash in slot 3 of sw1(ios)
-    ansible.netcommon.net_put:
-      src: xfdgfnfgn
-      protocol: sftp
-      dest: bootflash:/cat9k_lite_iosxe.17.09.05.SPA.bin
+- name: Transfer firmware from AWX to Cisco switch
+  hosts: cisco_switches
+  tasks:
+    - name: Copy firmware to switch via SFTP
+      ansible.netcommon.net_put:
+        src: "{{ playbook_dir }}/firmware.bin"
+        dest: bootflash:/cat9k_lite_iosxe.17.09.05.SPA.bin
+        protocol: sftp
