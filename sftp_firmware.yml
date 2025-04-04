@@ -1,6 +1,6 @@
 ---
 - name: Transfer firmware from AWX to Cisco switch
-  hosts: cisco_switches
+  hosts: all
   tasks:
     - name: Copy firmware to switch via SFTP
       ansible.netcommon.net_put:
